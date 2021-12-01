@@ -11,4 +11,13 @@ package entidades;
  */
 public class Estudiante {
     
+    String identificacion;
+    String nombre;
+
+    public Estudiante(String identificacion, String nombre) {
+        this.identificacion = identificacion;
+        this.nombre = nombre;
+    }
+    
+    
 }
