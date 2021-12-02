@@ -38,18 +38,21 @@ public class LeerArchivoTexto {
     
     public List<String> LeerArchivo() throws ArchivoNoValidoException {
         List<String> contenidotexto = new ArrayList<>();
+         if(!verificarExtensionValida(rutaArchivo)){
+               throw new ArchivoNoValidoException("La extensión del archivo no es correcta. Recuerde que el archivo debe tener extensión .txt");
+          }
         try {
             // Se abre el fichero y se hace la respectiva creacion de BufferedReader
             File archivo = new File(rutaArchivo);
             FileReader Filereader = new FileReader(archivo);
             BufferedReader BufferArchivo = new BufferedReader(Filereader);
-            if (!VerificacionArhivo(archivo)) {
+            if (!verificacionArhivoVacio(archivo)) {
                 throw new ArchivoNoValidoException("No se encuentra ninguna información en el archivo");
             } else {
                 String linea;
                 while ((linea = BufferArchivo.readLine()) != null) {
                     String [] lineapartida = linea.split(",");
-                    if (VerificacionLinea(lineapartida)) {
+                    if (verificacionLinea(lineapartida)) {
                         contenidotexto.add(linea);
                     } else {
                         throw new ArchivoNoValidoException("Este archivo contiene información diferente a estudiantes y materias , no se pueden realizar las operaciones");
@@ -69,18 +72,28 @@ public class LeerArchivoTexto {
      * @param lineaDato --> linea del archivo que se está leyenndo
      * @return verdadero si corresponde a un numero o falso si no corresponde
      */
-    private boolean VerificacionLinea(String [] lineasPartidas) {
+    private boolean verificacionLinea(String [] lineasPartidas) {
         if(lineasPartidas.length!=4){
             return false;
         }
         return true;
     }
 
-    private boolean VerificacionArhivo(File archivo){
+    private boolean verificacionArhivoVacio(File archivo){
     int tamaño = (int) archivo.length();
     if (tamaño == 0) {
         return false;
        }
     return true;
     }
+    
+    private boolean verificarExtensionValida(String ruta){
+        
+        String[] rutapartida = ruta.split("\\."); 
+        if(rutapartida[rutapartida.length-1].equals("txt")){
+            return true;
+        }
+        return false;
+    }
+    
 }
