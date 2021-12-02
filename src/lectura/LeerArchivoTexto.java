@@ -52,7 +52,7 @@ public class LeerArchivoTexto {
                     if (VerificacionLinea(lineapartida)) {
                         contenidotexto.add(linea);
                     } else {
-                        throw new ArchivoNoValidoException("Este archivo contiene información diferente a lineas de estudiantes, no se pueden realizar las operaciones");
+                        throw new ArchivoNoValidoException("Este archivo contiene información diferente a estudiantes y materias , no se pueden realizar las operaciones");
                     }
                 }
             }

@@ -47,7 +47,10 @@ public class Estudiante {
             this.materias.add(newMateria);
             return true;
         }
-        
         return false;
+    }
+    
+    public int conteoMaterias(){
+        return materias.size();
     }
 }
