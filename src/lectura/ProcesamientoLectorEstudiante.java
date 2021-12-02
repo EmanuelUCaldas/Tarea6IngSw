@@ -11,8 +11,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- *
+ * Esta clase realiza el proceso de conversión del archivo a la estructura basica (Estudiante - Materia)
  * @author Emanuel Mejia
+ * @version 1.0
  */
 public class ProcesamientoLectorEstudiante {
 
@@ -24,6 +25,10 @@ public class ProcesamientoLectorEstudiante {
         List<String> contenido = leer.LeerArchivo();
         return convertirArchivo(contenido);
     }
+      /**
+     *  Convierte cada linea en un estudiante con su respectiva información (Código y Nombre)
+     * @return Lista de todos los estudiantes que se crearon.
+     */
     
     public List<Estudiante> convertirArchivo (List<String> contenido){
         List<Estudiante> estudiantes = new ArrayList();
@@ -40,6 +45,10 @@ public class ProcesamientoLectorEstudiante {
         return estudiantes;
     }
     
+    /**
+     *  Verifica si un estudiante ya se encuentra en la lista de estudiantes creados.
+     * @return True si el estudiante ya existe (Se le asignan las materias previamente). False si el estudiante no ha sido creado.
+     */
     public boolean verificarEstudianteExiste(String[] estudiante, List<Estudiante> estudiantes){
         for (Estudiante estudianteListado: estudiantes) {
             if(estudiante[0].equals(estudianteListado.getIdentificacion())){

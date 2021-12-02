@@ -13,11 +13,12 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import javax.swing.JOptionPane;
 
 /**
- *
+ * Clase que se encarga de realizar la lectura de un archivo mediante una ruta especificada, se lanzan excepciones cuando se tenga
+ * problemas de lectura con el archivo o ruta.
  * @author Emanuel Mejia
+ * @version 1.0
  */
 public class LeerArchivoTexto {
     
@@ -28,12 +29,11 @@ public class LeerArchivoTexto {
     }
 
     /**
-     * Lee y valida los respectivos datos del archivo.
+     * Valida que la ruta tenga una extensión correcta (.txt), lee el archivo linea por linea y se verifica que cada linea
+     * cumpla con los requisitos dados para el programa.
      *
-     * @return tendremos el retorno de la lista con los numeros que hemos
-     * encontrado en el archivo
-     * @throws ValidacionesException se encargará de validar los formatos y la
-     * existencia del archivo.
+     * @return Cada linea del contenido del archivo en un lista de string.
+     * @throws ArchivoNoValidoException Se lanzan si el archivo o ruta no cumple con las condiciones.
      */
     
     public List<String> LeerArchivo() throws ArchivoNoValidoException {
@@ -66,11 +66,9 @@ public class LeerArchivoTexto {
     }
 
     /**
-     * Realiza la verificación sobre si el dato que obtenemos, corresponde a un
-     * numero
-     *
-     * @param lineaDato --> linea del archivo que se está leyenndo
-     * @return verdadero si corresponde a un numero o falso si no corresponde
+     * Valida que la linea de texto cumpla con la estructura básica del formato de información. 
+     * que no tenga mas o menos campos de los requeridos.
+     * @return True si la linea cumple con la estructura, false si no cumple con el requisito.
      */
     private boolean verificacionLinea(String [] lineasPartidas) {
         if(lineasPartidas.length!=4){
@@ -78,6 +76,12 @@ public class LeerArchivoTexto {
         }
         return true;
     }
+    
+     /**
+     * Valida que el archivo que hemos encontrado con la ruta especificada no sea un archivo en blanco, es decir se verifica 
+     * que contenga información.
+     * @return True si el archivo contiene información, false si el archivo está en blanco o sin información.
+     */
 
     private boolean verificacionArhivoVacio(File archivo){
     int tamaño = (int) archivo.length();
@@ -87,8 +91,12 @@ public class LeerArchivoTexto {
     return true;
     }
     
+     /**
+     * Valida que el archivo tenga una extensión valida, es decir .txt para este caso. No se permiten extensiones diferentes
+     * @return True si el archivo tiene la extensión valida .txt, false si tiene otra extensión.
+     */
+    
     private boolean verificarExtensionValida(String ruta){
-        
         String[] rutapartida = ruta.split("\\."); 
         if(rutapartida[rutapartida.length-1].equals("txt")){
             return true;

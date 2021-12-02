@@ -6,8 +6,9 @@
 package excepciones;
 
 /**
- *
+ * Clase Excepción para cuando se presenten errores en la lectura de los archivos.
  * @author Emanuel Mejia
+ * @version 1.0
  */
 public class ArchivoNoValidoException extends Exception {
 

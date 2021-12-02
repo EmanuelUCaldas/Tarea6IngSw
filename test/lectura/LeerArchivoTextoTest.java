@@ -12,13 +12,19 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 /**
- *
+ * Pruebas unitarias en el metodo de lectura de archivo.
  * @author Emanuel Mejia
+ * @version 1.0
  */
 public class LeerArchivoTextoTest {
     
     public LeerArchivoTextoTest() {
     }
+    
+     /**
+     * Prueba para el metodo "LeerArchivoTexto" en la cual el archivo que ingresa no contiene la estructura
+     * permitida para el ejercicio de conteo de materias. Lanza excepción
+     */
 
     @Test (expected = ArchivoNoValidoException.class)
     public void testLeerArchivoInformaciónIncorrecta() throws Exception {
@@ -27,13 +33,16 @@ public class LeerArchivoTextoTest {
         List<String> resultado = lectorarchivotexto.LeerArchivo();
     }
     
+     /**
+     * Prueba para el metodo "LeerArchivoTexto" en la cual se le ingresa una ruta que no existe y se espera
+     * que el programa lance excepción.
+     */
+    
        @Test (expected = ArchivoNoValidoException.class)
     public void testLeerArchivoNoExistente() throws Exception {
         String ruta ="ruta ficticia que no existe";
         LeerArchivoTexto lectorarchivotexto = new LeerArchivoTexto(ruta);
         List<String> resultado = lectorarchivotexto.LeerArchivo();
     }
-    
-    
     
 }

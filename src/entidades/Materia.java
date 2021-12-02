@@ -6,8 +6,9 @@
 package entidades;
 
 /**
- *
+ * Clase que alberga la estructura de información básica de una materia.
  * @author Emanuel Mejia
+ * @version 1.0
  */
 public class Materia {
     

@@ -9,8 +9,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- *
+ * Clase que alberga la estructura de información básica de un estudiante.
  * @author Emanuel Mejia
+ * @version 1.0
  */
 public class Estudiante {
     
@@ -32,6 +33,11 @@ public class Estudiante {
         return identificacion;
     }
     
+    /**
+     * Método que busca la materia de un estudiante mediante un for y el respectivo codigo de la materia.
+     * @return True si el estudiante ya tiene una matricula en esa materia, de lo contrario false.
+     */
+    
     public Boolean buscarMateira(String codigoMateria){
         for (int i = 0; i < materias.size(); i++) {
             if (this.materias.get(i).getCodigo().equals(codigoMateria)) {
@@ -40,6 +46,12 @@ public class Estudiante {
         }
         return false;
       }
+    
+      /**
+     * Método que realiza el proceso de matricula de una materia a un estudiante..
+     * @return True si pudo realizar la matricula correctamente, de lo contrario false.
+     */
+    
    
     public Boolean agregarMatricula (String[] materia){
         if (!this.buscarMateira(materia[0])) {
